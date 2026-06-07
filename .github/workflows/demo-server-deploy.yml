@@ -1,0 +1,24 @@
+name: Deploy Demo Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy on ExCloud
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 210.79.128.81
+          username: ubuntu
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd /d/cohort Projects/server_devops
+            git pull origin main
+            npm install
+            npm restart 0

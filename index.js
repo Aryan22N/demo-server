@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.get("/", (req, res) => {
-  return res.json({ message: "server is healthy IN V-1.1" });
+  return res.json({ message: "server is healthy IN V-2.1" });
 });
 
 app.listen(PORT, () => {
