@@ -8,19 +8,27 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+
       - name: Deploy on ExCloud
         uses: appleboy/ssh-action@v1.0.3
+
         with:
           host: 210.79.128.81
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
+
           script: |
             export NVM_DIR="$HOME/.nvm"
-            [-s "$NVM_DIR/nvm.sh"] && \. "$NVM_DIR/nvm.sh"  
-             cd /d/cohort Projects/server_devops
-             git pull origin main
-             npm install
-             npm restart 0
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+            cd ~/demo-server
+
+            git pull origin main
+
+            npm install
+
+            pm2 restart demo-server
