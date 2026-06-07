@@ -18,7 +18,9 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           script: |
-            cd /d/cohort Projects/server_devops
-            git pull origin main
-            npm install
-            npm restart 0
+            export NVM_DIR="$HOME/.nvm"
+            [-s "$NVM_DIR/nvm.sh"] && \. "$NVM_DIR/nvm.sh"  
+             cd /d/cohort Projects/server_devops
+             git pull origin main
+             npm install
+             npm restart 0
