@@ -5,8 +5,8 @@ const app = express();
 
 app.get("/", (req, res) => {
   return res.json({
-    message: "server is healthy IN V-4.1",
-    status: "success using Docker and GitHub Actions",
+    message: "server is healthy IN V-5.1",
+    status: "success using Docker and GitHub Actions for CI/CD",
   });
 });
 
