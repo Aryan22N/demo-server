@@ -37,7 +37,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           script: |
-            docker rm -f demo-server-node || true
-            docker pull aryan22n/demo-server-node
-            docker run -d --name demo-server-node -p 3000:3000 aryan22n/demo-server-node
-            docker image prune -f
+            sudo docker rm -f demo-server-node || true
+            sudo docker pull aryan22n/demo-server-node
+            sudo docker run -d --name demo-server-node -p 3000:3000 aryan22n/demo-server-node
+            sudo docker image prune -f
